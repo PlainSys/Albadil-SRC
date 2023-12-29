@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/cutscenexplosion.wav-93f345a0574bcf298a5a7e97337a8205.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/cutscenexplosion.wav"
+dest_files=[ "res://.import/cutscenexplosion.wav-93f345a0574bcf298a5a7e97337a8205.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

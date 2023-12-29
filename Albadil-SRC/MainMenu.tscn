@@ -1,0 +1,324 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/images/menuart.png" type="Texture" id=1]
+[ext_resource path="res://Assets/fonts/pixeled/Pixeled.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Assets/images/logo.png" type="Texture" id=3]
+[ext_resource path="res://Assets/images/Optionsart.png" type="Texture" id=4]
+[ext_resource path="res://scripts/MMmain.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Music/A_Menu.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 19
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 40
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 25
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 24
+font_data = ExtResource( 2 )
+
+[node name="menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 5 )
+
+[node name="Background" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="logo" type="TextureRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -300.0
+margin_top = 137.0
+margin_right = 300.0
+margin_bottom = 326.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -83.0
+margin_top = -24.0
+margin_right = 83.0
+margin_bottom = 206.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="play" type="Button" parent="VBoxContainer"]
+margin_right = 166.0
+margin_bottom = 74.0
+custom_fonts/font = SubResource( 1 )
+text = "Play"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="opt" type="Button" parent="VBoxContainer"]
+margin_top = 78.0
+margin_right = 166.0
+margin_bottom = 152.0
+custom_fonts/font = SubResource( 1 )
+text = "Options"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="Button" parent="VBoxContainer"]
+margin_top = 156.0
+margin_right = 166.0
+margin_bottom = 230.0
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="selecteddiff" type="Label" parent="."]
+margin_left = 571.645
+margin_top = -10.7762
+margin_right = 1019.64
+margin_bottom = 45.2238
+custom_fonts/font = SubResource( 2 )
+text = "Difficulty selected: Normal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charselect" type="Label" parent="."]
+margin_left = 455.163
+margin_top = 77.4026
+margin_right = 1023.16
+margin_bottom = 133.403
+custom_fonts/font = SubResource( 2 )
+text = "Character selected: Shooter-bot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscore" type="Label" parent="."]
+margin_left = 607.0
+margin_top = 33.3529
+margin_right = 1023.0
+margin_bottom = 89.3529
+custom_fonts/font = SubResource( 2 )
+text = "Highest score: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="highscore2" type="Label" parent="."]
+visible = false
+margin_left = 607.0
+margin_top = 33.3529
+margin_right = 1023.0
+margin_bottom = 89.3529
+custom_fonts/font = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -183.5
+margin_top = -68.0
+margin_right = 183.5
+custom_colors/font_color = Color( 0.117647, 0.941176, 0.180392, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "(C)Aranorten 2022"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="reminder lol" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 277.647
+margin_top = 638.053
+margin_right = 759.647
+margin_bottom = 692.053
+custom_fonts/font = SubResource( 8 )
+text = "press N to view highest score"
+
+[node name="options" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 27.0
+margin_top = 39.0
+margin_right = -31.0
+margin_bottom = -24.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="heading" type="Label" parent="options"]
+margin_left = 16.4814
+margin_top = -17.9797
+margin_right = 272.481
+margin_bottom = 94.0203
+custom_fonts/font = SubResource( 4 )
+text = "Options"
+
+[node name="OP1" type="Label" parent="options"]
+margin_left = 19.478
+margin_top = 106.38
+margin_right = 254.478
+margin_bottom = 176.38
+custom_fonts/font = SubResource( 5 )
+text = "Character:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OP3" type="Label" parent="options"]
+margin_left = 19.478
+margin_top = 255.37
+margin_right = 254.478
+margin_bottom = 325.37
+custom_fonts/font = SubResource( 5 )
+text = "Lives:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OP4" type="Label" parent="options"]
+margin_left = 19.478
+margin_top = 325.37
+margin_right = 254.478
+margin_bottom = 395.37
+custom_fonts/font = SubResource( 5 )
+text = "Epilepsy:"
+
+[node name="OP5" type="Label" parent="options"]
+margin_left = 19.478
+margin_top = 411.37
+margin_right = 409.478
+margin_bottom = 481.37
+custom_fonts/font = SubResource( 5 )
+text = "Continue on death:"
+
+[node name="OP2" type="Label" parent="options"]
+margin_left = 17.9797
+margin_top = 176.8
+margin_right = 252.98
+margin_bottom = 246.8
+custom_fonts/font = SubResource( 5 )
+text = "Difficulty:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OP1b" type="Button" parent="options"]
+margin_left = 266.699
+margin_top = 113.871
+margin_right = 494.699
+margin_bottom = 175.871
+custom_fonts/font = SubResource( 6 )
+text = "Shooter-bot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OP2b" type="Button" parent="options"]
+margin_left = 243.0
+margin_top = 188.0
+margin_right = 367.0
+margin_bottom = 250.0
+custom_fonts/font = SubResource( 6 )
+text = "Normal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OP3B" type="Button" parent="options"]
+margin_left = 162.091
+margin_top = 263.519
+margin_right = 286.091
+margin_bottom = 325.519
+custom_fonts/font = SubResource( 6 )
+text = "2"
+
+[node name="OP4B" type="Button" parent="options"]
+margin_left = 213.748
+margin_top = 332.815
+margin_right = 337.748
+margin_bottom = 394.815
+custom_fonts/font = SubResource( 6 )
+text = "On"
+
+[node name="OP5B" type="Button" parent="options"]
+margin_left = 427.934
+margin_top = 419.75
+margin_right = 551.934
+margin_bottom = 481.75
+custom_fonts/font = SubResource( 6 )
+text = "Yes"
+
+[node name="close" type="Button" parent="options"]
+margin_left = 418.99
+margin_top = 610.969
+margin_right = 536.99
+margin_bottom = 684.969
+custom_fonts/font = SubResource( 7 )
+text = "Close"
+
+[node name="music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="pressed" from="VBoxContainer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="VBoxContainer/opt" to="." method="_on_opt_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="options/OP1b" to="." method="_on_OP1b_pressed"]
+[connection signal="pressed" from="options/OP2b" to="." method="_on_OP2b_pressed"]
+[connection signal="pressed" from="options/OP3B" to="." method="_on_OP3B_pressed"]
+[connection signal="pressed" from="options/OP4B" to="." method="_on_OP4B_pressed"]
+[connection signal="pressed" from="options/OP5B" to="." method="_on_OP5B_pressed"]
+[connection signal="pressed" from="options/close" to="." method="_on_close_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

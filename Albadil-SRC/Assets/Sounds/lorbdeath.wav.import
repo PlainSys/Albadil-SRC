@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/lorbdeath.wav-c217338718ccdd53a0b51f85622c7cfb.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/lorbdeath.wav"
+dest_files=[ "res://.import/lorbdeath.wav-c217338718ccdd53a0b51f85622c7cfb.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

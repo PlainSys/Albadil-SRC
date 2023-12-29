@@ -1,0 +1,242 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Assets/images/stage2.png" type="Texture" id=1]
+[ext_resource path="res://player1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/images/fire1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/images/fire2.png" type="Texture" id=4]
+[ext_resource path="res://longjim.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Music/A_Boss2.wav" type="AudioStream" id=6]
+[ext_resource path="res://scripts/longjimsummonghosts.gd" type="Script" id=7]
+[ext_resource path="res://shootingthing.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/stage2boss.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Sounds/light.wav" type="AudioStream" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 421, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6.10725, 206.881 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 410.99, 10 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "lazymovement"
+length = 6.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 728.823, 214.909 ), Vector2( 94.8225, 214.909 ), Vector2( 728.823, 214.909 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 13.7239, 18.2215 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 99.1533, 52.9274 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "trans"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("transition:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -726.906 ) ]
+}
+
+[node name="boss2" type="Node2D"]
+script = ExtResource( 9 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 436.992, 639.224 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="fire" type="AnimatedSprite" parent="."]
+position = Vector2( 81.567, 310.358 )
+scale = Vector2( 0.262814, 0.262814 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="fire3" type="AnimatedSprite" parent="."]
+position = Vector2( 630.672, 53.0438 )
+scale = Vector2( 0.181527, 0.195156 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="fire4" type="AnimatedSprite" parent="."]
+position = Vector2( 233.769, 44.6348 )
+scale = Vector2( 0.181527, 0.195156 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="fire5" type="AnimatedSprite" parent="."]
+position = Vector2( 438.107, -14.228 )
+scale = Vector2( 0.111453, 0.141996 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="fire2" type="AnimatedSprite" parent="."]
+position = Vector2( 676.081, 351.226 )
+scale = Vector2( 0.164709, 0.164709 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="wall" type="StaticBody2D" parent="."]
+position = Vector2( 384, 488 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+shape = SubResource( 2 )
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2( 389, 805 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+shape = SubResource( 2 )
+
+[node name="wall3" type="StaticBody2D" parent="."]
+position = Vector2( -24.0417, 613.769 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+shape = SubResource( 3 )
+
+[node name="wall4" type="StaticBody2D" parent="."]
+position = Vector2( 814.587, 623.668 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
+shape = SubResource( 3 )
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2( 410.536, -20.9763 )
+script = ExtResource( 7 )
+
+[node name="SpawnTimer" type="Timer" parent="Spawner"]
+
+[node name="explosion" type="Area2D" parent="."]
+position = Vector2( 381.391, 756.118 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosion"]
+shape = SubResource( 4 )
+
+[node name="shootingthing" parent="." instance=ExtResource( 8 )]
+position = Vector2( 690.314, 202.043 )
+
+[node name="shootingthing2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 59.4906, 39.2861 )
+
+[node name="longjim" parent="." instance=ExtResource( 5 )]
+position = Vector2( 728.823, 214.909 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="longjim"]
+anims/lazymovement = SubResource( 5 )
+
+[node name="lightsource" type="Area2D" parent="."]
+position = Vector2( 153.507, 141.493 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="lightsource"]
+shape = SubResource( 6 )
+
+[node name="cooldown" type="Timer" parent="lightsource"]
+wait_time = 0.5
+
+[node name="source" type="Area2D" parent="."]
+position = Vector2( 153.507, 141.493 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="source"]
+shape = SubResource( 7 )
+disabled = true
+
+[node name="light" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="flash" type="ColorRect" parent="."]
+margin_right = 790.0
+margin_bottom = 862.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="flasht" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
+[node name="transition" type="ColorRect" parent="."]
+visible = false
+margin_top = -726.906
+margin_right = 806.0
+margin_bottom = 58.0941
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="trans" type="AnimationPlayer" parent="."]
+anims/trans = SubResource( 8 )
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+
+[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
+[connection signal="area_entered" from="lightsource" to="." method="_on_lightsource_area_entered"]
+[connection signal="area_entered" from="lightsource" to="lightsource" method="_on_lightsource_area_entered"]
+[connection signal="timeout" from="lightsource/cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="flasht" to="." method="_on_flasht_timeout"]
+[connection signal="animation_finished" from="trans" to="." method="_on_trans_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://suicbot.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/speeders.gd" type="Script" id=2]
+[ext_resource path="res://Assets/images/Speeders.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "New Anim"
+length = 0.11
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+
+[node name="speeders" instance=ExtResource( 1 )]
+scale = Vector2( 0.55, 0.55 )
+script = ExtResource( 2 )
+verticalSpeed = 100.0
+setscore = 100
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 3 )
+vframes = 2
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -8.97968, -110.001 )
+
+[node name="VisibilityNotifier2D" parent="." index="2"]
+position = Vector2( 0.561153, -112.807 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
+"anims/New Anim" = SubResource( 1 )

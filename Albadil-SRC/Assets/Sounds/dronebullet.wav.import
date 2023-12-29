@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/dronebullet.wav-c64fb2122ac02415fa9f756b56f9664d.sample"
+
+[deps]
+
+source_file="res://Assets/Sounds/dronebullet.wav"
+dest_files=[ "res://.import/dronebullet.wav-c64fb2122ac02415fa9f756b56f9664d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

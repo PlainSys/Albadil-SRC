@@ -1,0 +1,262 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://Assets/images/stage3.png" type="Texture" id=1]
+[ext_resource path="res://player1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/images/digitparticle2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Music/A_Stage3.wav" type="AudioStream" id=4]
+[ext_resource path="res://Assets/images/digitparticle1.png" type="Texture" id=5]
+[ext_resource path="res://Assets/fonts/pixeled/Pixeled.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://scripts/timerr.gd" type="Script" id=7]
+[ext_resource path="res://scripts/spawner3.gd" type="Script" id=8]
+[ext_resource path="res://scripts/insertdifficultysh.gd" type="Script" id=9]
+[ext_resource path="res://Assets/images/stage.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sounds/stageenter.wav" type="AudioStream" id=11]
+[ext_resource path="res://scripts/stage3.gd" type="Script" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 7.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 415.308, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6.27014, 228.901 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 64.3745, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 159.148, 10 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 45
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 120
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=8]
+resource_name = "stagee"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("stageenter:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("stageenter:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("tree:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="stage3" type="Node2D"]
+script = ExtResource( 12 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player1" parent="." instance=ExtResource( 2 )]
+position = Vector2( 381.065, 586.447 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="particles" type="Node" parent="."]
+
+[node name="particle1" type="AnimatedSprite" parent="particles"]
+position = Vector2( 146.63, 559.298 )
+scale = Vector2( 0.234016, 0.234016 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="particle2" type="AnimatedSprite" parent="particles"]
+position = Vector2( 685.905, 331.04 )
+scale = Vector2( 0.234016, 0.234016 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="particle3" type="AnimatedSprite" parent="particles"]
+position = Vector2( 86.5618, 149.502 )
+scale = Vector2( 0.234016, 0.234016 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="particle4" type="AnimatedSprite" parent="particles"]
+position = Vector2( 322.828, 266.968 )
+scale = Vector2( 0.234016, 0.234016 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="particle5" type="AnimatedSprite" parent="particles"]
+position = Vector2( 520.385, 468.529 )
+scale = Vector2( 0.234016, 0.234016 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="particle6" type="AnimatedSprite" parent="particles"]
+position = Vector2( 725.95, 527.262 )
+scale = Vector2( 0.234016, 0.234016 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
+
+[node name="wall" type="StaticBody2D" parent="."]
+position = Vector2( 397.051, 459.98 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+shape = SubResource( 2 )
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2( 391.058, 711.696 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+shape = SubResource( 2 )
+
+[node name="wall3" type="StaticBody2D" parent="."]
+position = Vector2( -34.4611, 563.364 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+shape = SubResource( 3 )
+
+[node name="wall4" type="StaticBody2D" parent="."]
+position = Vector2( 836.055, 599.323 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
+shape = SubResource( 3 )
+
+[node name="wall5" type="Area2D" parent="."]
+position = Vector2( 767.533, 170.859 )
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall5"]
+shape = SubResource( 4 )
+
+[node name="wall6" type="Area2D" parent="."]
+position = Vector2( 623.37, 74.751 )
+rotation = 0.755761
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall6"]
+shape = SubResource( 5 )
+
+[node name="countdown" type="Label" parent="."]
+margin_left = 315.022
+margin_top = 9.34388
+margin_right = 450.022
+margin_bottom = 264.344
+custom_fonts/font = SubResource( 6 )
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="cd" type="Timer" parent="countdown"]
+process_mode = 0
+wait_time = 2.0
+autostart = true
+
+[node name="countdown2" type="Label" parent="countdown"]
+margin_right = 135.0
+margin_bottom = 255.0
+custom_fonts/font = SubResource( 6 )
+text = "500
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spawner" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="spawnTimer" type="Timer" parent="spawner"]
+
+[node name="stagenter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
+[node name="stageenter" type="Sprite" parent="."]
+position = Vector2( 545.244, 389.242 )
+texture = ExtResource( 10 )
+hframes = 2
+vframes = 2
+
+[node name="tree" type="Label" parent="."]
+visible = false
+margin_left = 423.144
+margin_top = 170.859
+margin_right = 543.144
+margin_bottom = 506.859
+custom_colors/font_color = Color( 0.145098, 0.313726, 0.545098, 1 )
+custom_fonts/font = SubResource( 7 )
+text = "3"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stagee = SubResource( 8 )
+
+[connection signal="timeout" from="countdown/cd" to="countdown" method="_on_cd_timeout"]
+[connection signal="timeout" from="spawner/spawnTimer" to="spawner" method="_on_spawnTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

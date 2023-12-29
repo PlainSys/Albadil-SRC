@@ -1,0 +1,240 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/images/stage2.png" type="Texture" id=1]
+[ext_resource path="res://player2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Assets/images/fire1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/images/fire2.png" type="Texture" id=4]
+[ext_resource path="res://scripts/stage2.gd" type="Script" id=5]
+[ext_resource path="res://Assets/Music/A_Stage2.wav" type="AudioStream" id=6]
+[ext_resource path="res://scripts/Spawner2.gd" type="Script" id=7]
+[ext_resource path="res://shootingthing.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/fonts/pixeled/Pixeled.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Assets/images/stage.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Sounds/stageenter.wav" type="AudioStream" id=11]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 421, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 6.10725, 206.881 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 410.99, 10 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 120
+font_data = ExtResource( 9 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "stagee"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("stage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("stage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("two:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="stage2b" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 438.122, 634.96 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="fire" type="AnimatedSprite" parent="."]
+position = Vector2( 81.567, 310.358 )
+scale = Vector2( 0.262814, 0.262814 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="fire3" type="AnimatedSprite" parent="."]
+position = Vector2( 630.672, 53.0438 )
+scale = Vector2( 0.181527, 0.195156 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="fire4" type="AnimatedSprite" parent="."]
+position = Vector2( 233.769, 44.6348 )
+scale = Vector2( 0.181527, 0.195156 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="fire5" type="AnimatedSprite" parent="."]
+position = Vector2( 438.107, -14.228 )
+scale = Vector2( 0.111453, 0.141996 )
+frames = SubResource( 1 )
+playing = true
+
+[node name="fire2" type="AnimatedSprite" parent="."]
+position = Vector2( 676.081, 351.226 )
+scale = Vector2( 0.164709, 0.164709 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="fog" type="ColorRect" parent="."]
+margin_right = 1029.0
+margin_bottom = 802.0
+color = Color( 0.223529, 0.160784, 0.160784, 0.682353 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="fog2" type="ColorRect" parent="."]
+visible = false
+margin_right = 1029.0
+margin_bottom = 802.0
+color = Color( 0.196078, 0.180392, 0.180392, 0.811765 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="wall" type="StaticBody2D" parent="."]
+position = Vector2( 398.983, 431.064 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+shape = SubResource( 2 )
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2( 389, 805 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+shape = SubResource( 2 )
+
+[node name="wall3" type="StaticBody2D" parent="."]
+position = Vector2( -24.0417, 613.769 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+shape = SubResource( 3 )
+
+[node name="wall4" type="StaticBody2D" parent="."]
+position = Vector2( 814.587, 623.668 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
+shape = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+
+[node name="Timer2" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="Spawner" type="Node2D" parent="."]
+position = Vector2( 410.536, -20.9763 )
+script = ExtResource( 7 )
+
+[node name="SpawnTimer" type="Timer" parent="Spawner"]
+
+[node name="explosion" type="Area2D" parent="."]
+position = Vector2( 381.391, 756.118 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explosion"]
+shape = SubResource( 4 )
+
+[node name="shootingthing" parent="." instance=ExtResource( 8 )]
+position = Vector2( 690.314, 202.043 )
+
+[node name="shootingthing2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 61.7355, 98.7766 )
+
+[node name="stage" type="Sprite" parent="."]
+position = Vector2( 545.244, 389.242 )
+texture = ExtResource( 10 )
+hframes = 2
+vframes = 2
+
+[node name="two" type="Label" parent="."]
+visible = false
+margin_left = 415.774
+margin_top = 168.829
+margin_right = 535.774
+margin_bottom = 504.829
+custom_colors/font_color = Color( 0.145098, 0.313726, 0.545098, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stagee = SubResource( 6 )
+
+[node name="stageenter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
+[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

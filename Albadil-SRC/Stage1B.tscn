@@ -1,0 +1,195 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Assets/images/stage1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/fonts/pixeled/Pixeled.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/Stage1B.gd" type="Script" id=3]
+[ext_resource path="res://player2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/images/stage.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/stageenter.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Music/A_Stage1.wav" type="AudioStream" id=7]
+[ext_resource path="res://scripts/spawner.gd" type="Script" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 17
+font_data = ExtResource( 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 303.242, 10 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "stage"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("stage:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("stage:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("one:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="DynamicFont" id=4]
+size = 120
+font_data = ExtResource( 2 )
+
+[node name="stage1b" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="bg" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="char" type="Label" parent="."]
+margin_left = 816.169
+margin_top = 94.494
+margin_right = 1052.17
+margin_bottom = 150.494
+custom_colors/font_color = Color( 0.392157, 0.960784, 0.560784, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Shooyter-bot"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="border" type="StaticBody2D" parent="."]
+position = Vector2( 420.475, 447.384 )
+scale = Vector2( 1.48, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border"]
+shape = SubResource( 2 )
+
+[node name="border2" type="StaticBody2D" parent="."]
+position = Vector2( 423.842, 826.777 )
+scale = Vector2( 1.48, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border2"]
+shape = SubResource( 2 )
+
+[node name="border3" type="StaticBody2D" parent="."]
+position = Vector2( -8.5668, 679.775 )
+scale = Vector2( -0.0199988, 22.388 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border3"]
+shape = SubResource( 2 )
+
+[node name="border4" type="StaticBody2D" parent="."]
+position = Vector2( 798.932, 657.3 )
+scale = Vector2( -0.0199988, 22.388 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border4"]
+shape = SubResource( 2 )
+
+[node name="player2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 306.368, 628.61 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="spawner" type="Node2D" parent="."]
+position = Vector2( 401.462, -7.06699 )
+script = ExtResource( 8 )
+
+[node name="SpawnTimer" type="Timer" parent="spawner"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stage = SubResource( 3 )
+
+[node name="stage" type="Sprite" parent="."]
+position = Vector2( 545.244, 389.242 )
+texture = ExtResource( 5 )
+hframes = 2
+vframes = 2
+
+[node name="one" type="Label" parent="."]
+visible = false
+margin_left = 476.25
+margin_top = 170.089
+margin_right = 524.25
+margin_bottom = 506.089
+custom_colors/font_color = Color( 0.145098, 0.313726, 0.545098, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Spawnpositions" type="Node" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 74.3931, 56.7171 )
+
+[node name="Position2D2" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 500.633, 13.128 )
+
+[node name="Position2D3" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 695.282, 7.93701 )
+
+[node name="Position2D4" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 181.306, 240.254 )
+
+[node name="Position2D5" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 114.336, 423.149 )
+
+[node name="Position2D6" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 392.088, 252.781 )
+
+[node name="Spawntimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2( -14.2866, 44.4472 )
+
+[node name="stageenter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[connection signal="timeout" from="spawner/SpawnTimer" to="spawner" method="_on_SpawnTimer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Spawntimer" to="." method="_on_Spawntimer_timeout"]

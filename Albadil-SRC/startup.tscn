@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Assets/Startup.ogv" type="VideoStream" id=1]
+[ext_resource path="res://Assets/AranortenStartup.wav" type="AudioStream" id=2]
+[ext_resource path="res://scripts/startup.gd" type="Script" id=3]
+
+[node name="startup" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="VideoPlayer" type="VideoPlayer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 116.0
+margin_bottom = -116.0
+stream = ExtResource( 1 )
+autoplay = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 1025.0
+margin_bottom = 120.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = -1.3559
+margin_top = 648.541
+margin_right = 1023.64
+margin_bottom = 768.541
+color = Color( 0, 0, 0, 1 )
+
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

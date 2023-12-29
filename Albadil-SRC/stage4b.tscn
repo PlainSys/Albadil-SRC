@@ -1,0 +1,210 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Assets/images/lava1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/images/stage4.png" type="Texture" id=2]
+[ext_resource path="res://Assets/images/lava2.png" type="Texture" id=3]
+[ext_resource path="res://player2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/stage4.gd" type="Script" id=5]
+[ext_resource path="res://scripts/Spawner4.gd" type="Script" id=6]
+[ext_resource path="res://shootingthing.tscn" type="PackedScene" id=7]
+[ext_resource path="res://shootingthing2.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Music/A_Stage4.wav" type="AudioStream" id=9]
+[ext_resource path="res://Assets/images/stage.png" type="Texture" id=10]
+[ext_resource path="res://Assets/fonts/pixeled/Pixeled.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Assets/Sounds/stageenter.wav" type="AudioStream" id=12]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "default",
+"speed": 8.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 437.111, 10 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 10, 223.51 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 120
+font_data = ExtResource( 11 )
+
+[sub_resource type="Animation" id=5]
+resource_name = "stagee"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("stage:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("stage:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("4:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[node name="stage4b" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 447.171, 382.637 )
+scale = Vector2( 1, 1.04009 )
+frames = SubResource( 1 )
+frame = 1
+playing = true
+
+[node name="bg" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 196.576, 644.881 )
+scale = Vector2( 0.75, 0.75 )
+
+[node name="flash" type="ColorRect" parent="."]
+margin_right = 792.0
+margin_bottom = 817.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+autostart = true
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource( 6 )
+
+[node name="SpawnTimer" type="Timer" parent="Spawner"]
+one_shot = true
+
+[node name="wall" type="StaticBody2D" parent="."]
+position = Vector2( 325.269, 432.749 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall"]
+shape = SubResource( 2 )
+
+[node name="wall2" type="StaticBody2D" parent="."]
+position = Vector2( 369.11, 816.001 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall2"]
+shape = SubResource( 2 )
+
+[node name="wall3" type="StaticBody2D" parent="."]
+position = Vector2( -35.3553, 640.639 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall3"]
+shape = SubResource( 3 )
+
+[node name="wall4" type="StaticBody2D" parent="."]
+position = Vector2( 753.776, 667.509 )
+rotation = -0.456912
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="wall4"]
+shape = SubResource( 3 )
+
+[node name="shootingthing" parent="." instance=ExtResource( 7 )]
+position = Vector2( 83.4386, 224.86 )
+
+[node name="shootingthing2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 678.823, 354.967 )
+
+[node name="shootingthing3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 263.043, 233.345 )
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="Spawnpositions" type="Node" parent="."]
+
+[node name="Position2D" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 154.149, 345.068 )
+
+[node name="Position2D2" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 316.784, 318.198 )
+
+[node name="Position2D3" type="Position2D" parent="Spawnpositions" groups=["spawn"]]
+position = Vector2( 581.242, 183.848 )
+
+[node name="Spawntimer" type="Timer" parent="."]
+wait_time = 2.5
+autostart = true
+
+[node name="Spawn" type="Node2D" parent="."]
+position = Vector2( 629.325, 412.95 )
+
+[node name="stage" type="Sprite" parent="."]
+position = Vector2( 545.244, 389.242 )
+texture = ExtResource( 10 )
+hframes = 2
+vframes = 2
+
+[node name="4" type="Label" parent="."]
+visible = false
+margin_left = 422.85
+margin_top = 173.948
+margin_right = 542.85
+margin_bottom = 509.948
+custom_colors/font_color = Color( 0.145098, 0.313726, 0.545098, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/stagee = SubResource( 5 )
+
+[node name="stageenter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Spawner/SpawnTimer" to="Spawner" method="_on_SpawnTimer_timeout"]
+[connection signal="timeout" from="Spawntimer" to="." method="_on_Spawntimer_timeout"]

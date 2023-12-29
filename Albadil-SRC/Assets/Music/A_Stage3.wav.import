@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/A_Stage3.wav-70327f2c7e35eda87e0e206cb031a303.sample"
+
+[deps]
+
+source_file="res://Assets/Music/A_Stage3.wav"
+dest_files=[ "res://.import/A_Stage3.wav-70327f2c7e35eda87e0e206cb031a303.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Assets/Music/A_Credits.wav" type="AudioStream" id=1]
+[ext_resource path="res://Assets/fonts/pixeled/Pixeled.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/badnedsb.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 23
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="badnedsb" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+pitch_scale = 0.3
+autoplay = true
+
+[node name="text" type="Label" parent="."]
+margin_left = 9.34387
+margin_top = 20.0226
+margin_right = 1010.34
+margin_bottom = 153.023
+custom_fonts/font = SubResource( 1 )
+text = "Shooterbot has defeated Narkabhira, but after he 
+left the volcano. He realized that Nar dealt lots
+of damage to the point where he accepted that he
+will die, he died moments after. Nark's enemies kept
+regenerating and with nobody to stop them, the
+world stays dystopian and ruined.
+Beat the game without using continues to get the
+good ending"
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.3168
+margin_top = 289.361
+margin_right = 80.6832
+margin_bottom = 351.361
+custom_fonts/font = SubResource( 2 )
+text = "return"
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]

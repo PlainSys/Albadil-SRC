@@ -1,0 +1,247 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Assets/images/stage1.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Music/A_Boss1.wav" type="AudioStream" id=2]
+[ext_resource path="res://scripts/Stage1boss.gd" type="Script" id=3]
+[ext_resource path="res://player1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/images/Deilquilo.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sounds/cutscenexplosion.wav" type="AudioStream" id=6]
+[ext_resource path="res://Assets/Sounds/bomb.wav" type="AudioStream" id=7]
+[ext_resource path="res://deilquilo.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 303.242, 10 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "flash"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("background1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("background2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true, false, true ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/path = NodePath("background1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("background2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "bossbeginning"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("propig:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 390.323, -29.6985 ), Vector2( 391.737, 226.274 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "loop"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("deilquilo:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 391.737, 223.446 ), Vector2( 87.7372, 223.446 ), Vector2( 546.737, 223.446 ), Vector2( 87.7372, 223.446 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "trans"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("transition:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -726.906 ), Vector2( 0, -4.90601 ) ]
+}
+
+[node name="boss1" type="Node2D"]
+script = ExtResource( 3 )
+
+[node name="bg" type="TextureRect" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="border" type="StaticBody2D" parent="."]
+position = Vector2( 420.475, 497.895 )
+scale = Vector2( 1.48, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border"]
+shape = SubResource( 1 )
+
+[node name="border2" type="StaticBody2D" parent="."]
+position = Vector2( 423.842, 826.777 )
+scale = Vector2( 1.48, 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border2"]
+shape = SubResource( 1 )
+
+[node name="border3" type="StaticBody2D" parent="."]
+position = Vector2( -10.1542, 679.775 )
+scale = Vector2( -0.0199988, 22.388 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border3"]
+shape = SubResource( 1 )
+
+[node name="border4" type="StaticBody2D" parent="."]
+position = Vector2( 798.932, 657.3 )
+scale = Vector2( -0.0199988, 22.388 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="border4"]
+shape = SubResource( 1 )
+
+[node name="propig" type="Sprite" parent="."]
+position = Vector2( 390.323, -29.6985 )
+texture = ExtResource( 5 )
+
+[node name="background1" type="ColorRect" parent="."]
+margin_right = 837.0
+margin_bottom = 775.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="background2" type="ColorRect" parent="."]
+visible = false
+margin_right = 837.0
+margin_bottom = 775.0
+color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 279.178, 649.172 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="deilquilo" parent="." instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 310.121, 223.446 )
+
+[node name="theme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
+[node name="flash" type="AnimationPlayer" parent="."]
+anims/flash = SubResource( 2 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="stopflash" type="AnimationPlayer" parent="."]
+anims/stop = SubResource( 3 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/bossbeginning = SubResource( 4 )
+
+[node name="cutsceneaudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+
+[node name="flashaudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true
+
+[node name="bossbegin" type="Timer" parent="."]
+wait_time = 1.7
+
+[node name="bossloopcauseisucc" type="AnimationPlayer" parent="."]
+anims/loop = SubResource( 5 )
+
+[node name="transition" type="ColorRect" parent="."]
+visible = false
+margin_top = -726.906
+margin_right = 806.0
+margin_bottom = 58.094
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/trans = SubResource( 6 )
+
+[node name="Timer2" type="Timer" parent="."]
+process_mode = 0
+wait_time = 0.5
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="bossbegin" to="." method="_on_bossbegin_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_AnimationPlayer2_animation_finished"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ebullet.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Assets/images/dronebullet.png" type="Texture" id=2]
+
+[node name="dbullet" instance=ExtResource( 1 )]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="Sprite" parent="." index="0"]
+scale = Vector2( 0.09, 0.09 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( -0.0303326, -5.55172 )
+
+[node name="VisibilityNotifier2D" parent="." index="2"]
+position = Vector2( -1.13258, -1.90735e-05 )
+scale = Vector2( 2.75945, 6.08844 )
